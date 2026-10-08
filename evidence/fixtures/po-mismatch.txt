@@ -1,0 +1,14 @@
+MATCHPAY LIVE PROOF / PURCHASE ORDER
+document_id: po-mismatch
+order_id: live-mismatch
+buyer: MatchPay Buyer
+supplier: MatchPay Supplier
+currency: GEN
+total_amount: 1 GEN
+line_item: Managed integration service
+quantity: 1
+unit_price: 1 GEN
+substitutions: none without written buyer approval
+invoice_terms: invoice must reference live-mismatch and total 1 GEN
+delivery_scope: one accepted integration delivery for live-mismatch
+acceptance_conditions: buyer acceptance follows a receipt naming the order and delivery reference
