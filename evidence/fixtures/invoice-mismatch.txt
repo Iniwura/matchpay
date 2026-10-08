@@ -1,0 +1,11 @@
+MATCHPAY LIVE PROOF / INVOICE WITH MATERIAL MISMATCH
+document_id: invoice-mismatch
+order_id: live-mismatch
+invoice_number: INV-LIVE-MISMATCH-001
+supplier: MatchPay Supplier
+currency: GEN
+line_item: Managed integration service
+quantity: 2
+unit_price: 1 GEN
+total_amount: 2 GEN
+payment_terms: reference live-mismatch; exact total 2 GEN

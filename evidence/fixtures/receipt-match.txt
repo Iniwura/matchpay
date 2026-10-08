@@ -1,0 +1,8 @@
+MATCHPAY LIVE PROOF / DELIVERY RECEIPT
+document_id: receipt-match
+order_id: live-match
+receipt_number: GRN-LIVE-MATCH-001
+delivery_reference: DEL-LIVE-MATCH-001
+delivered_scope: one accepted integration delivery
+delivered_quantity: 1
+acceptance: accepted for live-match

@@ -1,0 +1,11 @@
+MATCHPAY LIVE PROOF / INVOICE
+document_id: invoice-match
+order_id: live-match
+invoice_number: INV-LIVE-MATCH-001
+supplier: MatchPay Supplier
+currency: GEN
+line_item: Managed integration service
+quantity: 1
+unit_price: 1 GEN
+total_amount: 1 GEN
+payment_terms: reference live-match; exact total 1 GEN
