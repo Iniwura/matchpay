@@ -464,11 +464,13 @@ def _validate_semantic_result(value: Any, criteria: list[dict[str, str]], source
 
 
 def _semantic_core(value: dict[str, Any]) -> list[dict[str, Any]]:
+    # Independent validators must agree on the payment-relevant classification.
+    # Witness selection is still schema-validated and stored for audit, but it
+    # is allowed to differ when multiple committed documents support a status.
     return [
         {
             "criterion_id": item["criterion_id"],
             "status": item["status"],
-            "witness_evidence_ids": item["witness_evidence_ids"],
         }
         for item in value["criteria"]
     ]
