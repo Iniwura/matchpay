@@ -999,4 +999,3 @@ class MatchPay(_contract_base):  # pyright: ignore[reportGeneralTypeIssues]
 
 
 del _contract_base
-
