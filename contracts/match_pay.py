@@ -198,14 +198,21 @@ def _address_key(value: Any) -> str:
     return _address(value).as_hex.lower()
 
 
-def _stored_json(value: str, field: str, maximum: int) -> Any:
-    value = _text(value, field, maximum)
-    try:
-        parsed = json.loads(value, object_pairs_hook=_reject_duplicate_keys)
-    except gl.vm.UserError:
-        raise
-    except Exception:
+def _stored_json(value: Any, field: str, maximum: int) -> Any:
+    if type(value) is str:
+        value = _text(value, field, maximum)
+        try:
+            parsed = json.loads(value, object_pairs_hook=_reject_duplicate_keys)
+        except gl.vm.UserError:
+            raise
+        except Exception:
+            raise gl.vm.UserError(field + " is not valid JSON.")
+    elif type(value) is list or type(value) is dict:
+        parsed = value
+    else:
         raise gl.vm.UserError(field + " is not valid JSON.")
+    if len(_canonical(parsed)) > maximum:
+        raise gl.vm.UserError(field + " is too long.")
     return parsed
 
 
@@ -671,8 +678,8 @@ class MatchPay(_contract_base):  # pyright: ignore[reportGeneralTypeIssues]
         order_id: str,
         supplier: Address,
         amount: u256,
-        purchase_order_manifest_json: str,
-        criteria_json: str,
+        purchase_order_manifest_json: Any,
+        criteria_json: Any,
         invoice_requirements: str,
         delivery_requirements: str,
         submission_deadline_utc: str,
@@ -775,9 +782,9 @@ class MatchPay(_contract_base):  # pyright: ignore[reportGeneralTypeIssues]
     def submit_packet(
         self,
         order_id: str,
-        invoice_manifest_json: str,
-        delivery_manifest_json: str,
-        document_identifiers_json: str,
+        invoice_manifest_json: Any,
+        delivery_manifest_json: Any,
+        document_identifiers_json: Any,
     ) -> str:
         order = self._order(order_id)
         if order.state != OPEN or order.current_packet_id:
@@ -811,9 +818,9 @@ class MatchPay(_contract_base):  # pyright: ignore[reportGeneralTypeIssues]
     def repair_packet(
         self,
         order_id: str,
-        invoice_manifest_json: str,
-        delivery_manifest_json: str,
-        document_identifiers_json: str,
+        invoice_manifest_json: Any,
+        delivery_manifest_json: Any,
+        document_identifiers_json: Any,
     ) -> str:
         order = self._order(order_id)
         if order.state != UNRESOLVED:
