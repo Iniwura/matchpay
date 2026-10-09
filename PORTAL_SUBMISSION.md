@@ -22,13 +22,17 @@ The production frontend is wired to:
 
 - Public repository: https://github.com/Iniwura/matchpay
 - Contract source commit: `9a5b13c`
-- Release commit: `4fc9e93`
+- Previous public release commit before this publication cleanup:
+  `c280cec52a47e50a4662f9bbc10750cd47f0c470`
+- Final public release commit: the publication-cleanup commit now at `main`;
+  the exact new HEAD is reported with this packet.
 - Local/deployed source SHA-256:
   `99df9bcc6fcd09718a6354664b70de35b2c133c1711173db2776c2048cf5fe55`
 - Checked-in schema SHA-256:
   `9884f67f3c6b565222973251ec319728b0ca3a3006f7220a372cce2b4deaae35`
 - Deployment lifecycle: `FINALIZED`, `MAJORITY_AGREE`, accepted
 - Vercel deployment: `READY`, production target
+- Vercel SSO/deployment protection: disabled for anonymous public access
 
 ## Verification gates
 

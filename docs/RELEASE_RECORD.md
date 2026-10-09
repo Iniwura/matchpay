@@ -110,4 +110,12 @@ guard rejected the call before signing/submission.
 - Route verification: an authenticated `vercel curl` returned the MatchPay
   HTML shell and `/assets/index-t3yvLwfX.js`; the production bundle contains
   the fresh contract address above.
-- Vercel deployment protection is enabled on the production route.
+- Vercel SSO/deployment protection: disabled for anonymous public access.
+- Anonymous browser verification: a fresh Chromium profile received HTTP 200,
+  loaded the MatchPay landing page and all three reviewer orders
+  (`live-match`, `live-mismatch`, `live-unresolved`), and showed no login,
+  authentication, or deployment-protection wall. The profile had zero cookies
+  and no local-storage entries.
+- The anonymous browser loaded the production JavaScript asset
+  `/assets/index-t3yvLwfX.js`; the asset contains the deployed contract address
+  `0x2329e3DcF5C82b525505036Ef0bC1217982e6367`.
