@@ -104,18 +104,20 @@ guard rejected the call before signing/submission.
 
 - Project: `matchpay` under `iniwura-akurus-projects`
 - Production URL: https://matchpay-psi.vercel.app
-- Deployment ID: `dpl_HrEXCrDAFQCPwW6aV8h5dnYLKQwx`
+- Deployment ID: `dpl_9dstBFCEmj8sBUwy2TZvuQyv7EJo`
 - Deployment status: `READY`, target `production`
-- Inspector: https://vercel.com/iniwura-akurus-projects/matchpay/HrEXCrDAFQCPwW6aV8h5dnYLKQwx
-- Route verification: an authenticated `vercel curl` returned the MatchPay
-  HTML shell and `/assets/index-t3yvLwfX.js`; the production bundle contains
-  the fresh contract address above.
+- Inspector: https://vercel.com/iniwura-akurus-projects/matchpay/9dstBFCEmj8sBUwy2TZvuQyv7EJo
+- Route verification: anonymous HTTP requests to `/`, `/proof`, `/app`,
+  `/app/create`, and `/app/orders/live-match` each returned `200` after the
+  SPA fallback was added in `frontend/vercel.json`.
 - Vercel SSO/deployment protection: disabled for anonymous public access.
-- Anonymous browser verification: a fresh Chromium profile received HTTP 200,
-  loaded the MatchPay landing page and all three reviewer orders
-  (`live-match`, `live-mismatch`, `live-unresolved`), and showed no login,
-  authentication, or deployment-protection wall. The profile had zero cookies
-  and no local-storage entries.
+- Anonymous browser verification: fresh Chromium profiles received HTTP 200,
+  loaded the MatchPay landing page, proof page, settlement desk, live dossier,
+  and creation flow. The proof page showed all three reviewer orders
+  (`live-match`, `live-mismatch`, `live-unresolved`) with `PAID` and `REFUNDED`
+  outcomes, and showed no login, authentication, or deployment-protection wall.
+  The profiles had zero cookies and no local-storage entries; mobile routes had
+  no horizontal overflow.
 - The anonymous browser loaded the production JavaScript asset
-  `/assets/index-t3yvLwfX.js`; the asset contains the deployed contract address
+  `/assets/index-CvoyQbee.js`; the asset contains the deployed contract address
   `0x2329e3DcF5C82b525505036Ef0bC1217982e6367`.
