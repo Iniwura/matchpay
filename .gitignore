@@ -7,3 +7,5 @@ frontend/dist/
 frontend/dist-test/
 evidence/*.log
 evidence/*.tmp
+frontend/.env.local
+frontend/.vercel/

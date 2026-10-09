@@ -99,3 +99,15 @@ guard rejected the call before signing/submission.
 - Reads use the SDK `LATEST_NONFINAL` path for responsive authoritative chain
   reads; writes estimate fees, preserve payable `fund_order` value, wait for a
   decided receipt, and refresh order state from chain.
+
+## Vercel production
+
+- Project: `matchpay` under `iniwura-akurus-projects`
+- Production URL: https://matchpay-psi.vercel.app
+- Deployment ID: `dpl_HrEXCrDAFQCPwW6aV8h5dnYLKQwx`
+- Deployment status: `READY`, target `production`
+- Inspector: https://vercel.com/iniwura-akurus-projects/matchpay/HrEXCrDAFQCPwW6aV8h5dnYLKQwx
+- Route verification: an authenticated `vercel curl` returned the MatchPay
+  HTML shell and `/assets/index-t3yvLwfX.js`; the production bundle contains
+  the fresh contract address above.
+- Vercel deployment protection is enabled on the production route.
