@@ -2,13 +2,22 @@
 
 ## Reviewer walkthrough
 
-1. Open the production frontend: https://matchpay-psi.vercel.app
-2. Connect a GenLayer Studio Dev wallet on chain `61997`.
-3. Use the order lookup to inspect the three completed proof orders:
-   `live-match`, `live-mismatch`, and `live-unresolved`.
-4. Confirm the final states are respectively `PAID`, `REFUNDED`, and
+1. Open the read-only reviewer experience first:
+   https://matchpay-psi.vercel.app/proof
+2. Inspect `live-match`: compatible paperwork, `MATCH`, and exact supplier
+   payment of `0.01 GEN`.
+3. Inspect `live-mismatch`: material substitution, supplier blocked, and exact
+   buyer refund of `0.01 GEN`.
+4. Inspect `live-unresolved`: unavailable evidence, fail-closed
+   `UNRESOLVED`, and exact buyer refund after the repair budget is exhausted.
+5. Open one deeper case dossier, for example:
+   https://matchpay-psi.vercel.app/app/orders/live-match
+6. Use the explorer links only as supporting evidence. The proof page and
+   dossier are understandable without connecting a wallet; wallet connection
+   is only needed for buyer/supplier writes in the settlement desk.
+7. Confirm the final states are respectively `PAID`, `REFUNDED`, and
    `REFUNDED`, with packet outcomes `MATCHED`, `MISMATCHED`, and `UNRESOLVED`.
-5. Follow the exact transaction hashes, receipts, transfer evidence, replay
+8. Follow the exact transaction hashes, receipts, transfer evidence, replay
    guards, and authoritative post-write reads in
    [`docs/RELEASE_RECORD.md`](docs/RELEASE_RECORD.md).
 
@@ -22,8 +31,8 @@ The production frontend is wired to:
 
 - Public repository: https://github.com/Iniwura/matchpay
 - Contract source commit: `9a5b13c`
-- Previous public release commit before the frontend redesign:
-  `44bd5985f373d593907d8dead16dc9fa97b4ed23`
+- Previous public release commit before this cleanup:
+  `121b21e921851b9a5cfd779e56307f2929721be2`
 - Final frontend release commit: the editorial redesign commit now at `main`;
   the exact new HEAD is reported with this packet.
 - Local/deployed source SHA-256:
@@ -34,6 +43,9 @@ The production frontend is wired to:
 - Vercel deployment: `READY`, production target
 - Vercel deployment ID: `dpl_9dstBFCEmj8sBUwy2TZvuQyv7EJo`
 - Vercel SSO/deployment protection: disabled for anonymous public access
+- Legacy frontend cleanup: unused `frontend/src/main.tsx` and
+  `frontend/src/styles.css` removed; the production asset names and bundle
+  contract address remained unchanged.
 
 The production route matrix is covered by the SPA fallback: `/`, `/proof`,
 `/app`, `/app/create`, and `/app/orders/live-match` each return HTTP 200.

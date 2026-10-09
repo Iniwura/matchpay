@@ -50,7 +50,36 @@ PATH="/home/ini/groundshift/.venv/bin:$PATH" GENVM_VERSION=vstudio-dev /home/ini
 
 The Direct Mode suite covers exact matches, material substitutions, wrong-order receipts, missing evidence, hash mismatch, frozen criteria, immutable revisions, malformed output, validator disagreement, prompt injection, repair exhaustion, exact payout once, and refund exclusivity.
 
-## Chain-backed portal
+## Editorial frontend
+
+The frontend is an editorial commercial-settlement app, not a generic
+chain-backed portal. Its visual language is built from purchase orders,
+supplier invoices, goods receipts, reconciliation marks, approval stamps and
+settlement instructions. The read-only proof experience leads with the three
+canonical Studio Dev cases; wallet actions appear only where a buyer or
+supplier must actually write to the contract.
+
+### Product surface
+
+- `/` — product landing page and the three-document mechanism.
+- `/proof` — wallet-free reviewer flow for `live-match`, `live-mismatch`, and
+  `live-unresolved`, including source documents, criterion results, final
+  states, transfers and explorer links.
+- `/app` — live settlement desk backed by `get_order_ids()` and `get_order()`.
+- `/app/create` — multi-step purchase-order definition and freeze-before-
+  funding flow.
+- `/app/orders/:id` — commercial case dossier with document sheets,
+  reconciliation results and the next contract-backed action.
+
+Start reviewer walkthroughs at:
+
+`https://matchpay-psi.vercel.app/proof`
+
+The proof and dossier routes are readable without a wallet. Connecting a
+GenLayer Studio Dev wallet is only required for contract writes in the
+settlement desk.
+
+## Chain-backed contract integration
 
 The frontend is a read-through to the deployed contract; it never seeds demo orders or invents settlement state.
 
